@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sydie Media | Palm Springs Creative</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ps-bg: #FCFAF2;
+            --ps-text: #2D2A26;
+            --ps-teal: #00A8A8;
+            --ps-coral: #FF7B7B;
+            --ps-sunny: #FFC857;
+            --ps-border: rgba(45, 42, 38, 0.1);
+        }
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: var(--ps-bg);
+            color: var(--ps-text);
+            scroll-behavior: smooth;
+        }
+        .font-serif {
+            font-family: 'Fraunces', serif;
+        }
+        .grain::after {
+            content: "";
+            position: fixed;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .ps-shadow-teal {
+            box-shadow: 10px 10px 0px 0px var(--ps-teal);
+        }
+        .ps-shadow-coral {
+            box-shadow: 10px 10px 0px 0px var(--ps-coral);
+        }
+        .ps-shadow-sunny {
+            box-shadow: 10px 10px 0px 0px var(--ps-sunny);
+        }
+        .ps-border {
+            border: 1px solid var(--ps-border);
+        }
+        .mcm-button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mcm-button:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 4px 4px 0px 0px var(--ps-text);
+        }
+        .logo-filter {
+            filter: brightness(0) saturate(100%) invert(13%) sepia(5%) saturate(547%) hue-rotate(314deg) brightness(96%) contrast(92%);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+</head>
+<body class="grain selection:bg-[#FF7B7B]/30">
+    <div id="root"></div>
+</body>
+</html>

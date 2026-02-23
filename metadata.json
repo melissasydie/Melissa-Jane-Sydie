@@ -1,0 +1,7 @@
+{
+  "name": "Sydie Media | Creative Portfolio",
+  "description": "A world-class, live portfolio for Sydie Media specializing in writing, podcasts, marketing, branding, and editing. Features an AI consultant powered by Gemini.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
