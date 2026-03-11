@@ -4,27 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sydie Media | Palm Springs Creative</title>
+    <title>Sydie Media | Narrative by Design</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ps-bg: #FCFAF2;
-            --ps-text: #2D2A26;
-            --ps-teal: #00A8A8;
-            --ps-coral: #FF7B7B;
-            --ps-sunny: #FFC857;
-            --ps-border: rgba(45, 42, 38, 0.1);
+            /* Frigidaire / MCM Elegant Palette */
+            --ps-bg: #FDFCF8; /* Ivory/Cream base */
+            --ps-text: #262626; /* Soft Charcoal */
+            
+            /* Muted "Appliance" Colors */
+            --ps-teal: #4A8C8C; /* Vintage Turquoise/Teal - Muted */
+            --ps-coral: #E08D79; /* Shell Pink/Terra Cotta - Muted */
+            --ps-gold: #C8A951; /* Antique Brass/Gold */
+            
+            /* Chrome & Structure */
+            --ps-chrome: #CBD5E1; /* Blue-ish Gray (Slate 300) for Chrome effect */
+            --ps-grey-light: #F1F5F9; /* Slate 100 - Very light cool gray */
+            --ps-grey-mid: #E2E8F0; /* Slate 200 */
+            
+            --ps-border: rgba(38, 38, 38, 0.08);
         }
+        
         body {
-            font-family: 'Josefin Sans', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             background-color: var(--ps-bg);
             color: var(--ps-text);
             scroll-behavior: smooth;
         }
-        .font-serif {
-            font-family: 'Fraunces', serif;
+        
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-family: 'Playfair Display', serif;
         }
+
+        /* Texture - Subtle Film Grain */
         .grain::after {
             content: "";
             position: fixed;
@@ -33,31 +46,48 @@
             width: 300%;
             height: 300%;
             background-image: url("https://www.transparenttextures.com/patterns/p6.png");
-            opacity: 0.15;
+            opacity: 0.08; /* Reduced opacity for elegance */
             pointer-events: none;
             z-index: 9999;
         }
-        .ps-shadow-teal {
-            box-shadow: 10px 10px 0px 0px var(--ps-teal);
+
+        /* "Appliance" Panel Styling */
+        .appliance-panel {
+            background: #FFFFFF;
+            border: 1px solid var(--ps-grey-mid);
+            border-radius: 24px; /* Distinct MCM rounded corners */
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.02), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.02),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8); /* Highlight for bezel effect */
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .ps-shadow-coral {
-            box-shadow: 10px 10px 0px 0px var(--ps-coral);
+
+        .appliance-panel:hover {
+            border-color: var(--ps-chrome);
+            box-shadow: 
+                0 10px 15px -3px rgba(0, 0, 0, 0.05), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            transform: translateY(-2px);
         }
-        .ps-shadow-sunny {
-            box-shadow: 10px 10px 0px 0px var(--ps-sunny);
+
+        /* Chrome/Metallic Button */
+        .btn-chrome {
+            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+            border: 1px solid #CBD5E1;
+            color: var(--ps-text);
+            box-shadow: 
+                0 2px 4px rgba(0,0,0,0.05),
+                inset 0 1px 0 rgba(255,255,255,0.9);
         }
-        .ps-border {
-            border: 1px solid var(--ps-border);
+        
+        .btn-chrome:hover {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
+            border-color: #94A3B8;
         }
-        .mcm-button {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .mcm-button:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 4px 4px 0px 0px var(--ps-text);
-        }
-        .logo-filter {
-            filter: brightness(0) saturate(100%) invert(13%) sepia(5%) saturate(547%) hue-rotate(314deg) brightness(96%) contrast(92%);
+
+        .text-balance {
+            text-wrap: balance;
         }
     </style>
 <script type="importmap">
@@ -65,14 +95,17 @@
   "imports": {
     "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
     "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+    "framer-motion": "https://esm.sh/framer-motion@^10.16.4",
     "react/": "https://esm.sh/react@^19.2.4/",
     "react": "https://esm.sh/react@^19.2.4",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
   }
 }
 </script>
+<link rel="stylesheet" href="/index.css">
 </head>
-<body class="grain selection:bg-[#FF7B7B]/30">
+<body class="grain selection:bg-[#E08D79]/20">
     <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>

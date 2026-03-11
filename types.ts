@@ -1,6 +1,16 @@
 import React from 'react';
 
-export type Category = 'All' | 'Writing' | 'Podcasts' | 'Marketing' | 'Branding' | 'Editing';
+export type Category = 'All' | 'Writing' | 'Audio' | 'Video' | 'Marketing' | 'Design';
+
+export interface SocialLink {
+  platform: 'Facebook' | 'Instagram' | 'LinkedIn' | 'YouTube' | 'Spotify' | 'Wefunder' | 'Website' | 'App' | 'Linktree';
+  url: string;
+}
+
+export interface SeasonLink {
+  season: string;
+  url: string;
+}
 
 export interface Project {
   id: string;
@@ -9,7 +19,15 @@ export interface Project {
   description: string;
   imageUrl: string;
   client?: string;
-  date: string;
+  projectType: string;
+  link?: string;
+  modalType?: 'gated' | 'social' | 'seasons' | 'gallery';
+  socialLinks?: SocialLink[];
+  seasonLinks?: SeasonLink[];
+  galleryImages?: string[];
+  carouselPostImages?: string[];
+  excerpt?: string;
+  platformName?: string;
 }
 
 export interface Service {
@@ -17,4 +35,16 @@ export interface Service {
   title: string;
   description: string;
   icon: React.ReactNode;
+  tagline?: string;
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  imageUrl: string;
+  tags: string[];
+  content?: string;
 }

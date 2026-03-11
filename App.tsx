@@ -3,21 +3,28 @@ import React, { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import ServicesGrid from './components/ServicesGrid';
 import Portfolio from './components/Portfolio';
+import TheAnthology from './components/TheAnthology';
 import Contact from './components/Contact';
-import ChatConsultant from './components/ChatConsultant';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, MessageCircle, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const SydieLogo = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" fill="currentColor" className={className}>
-    {/* Refined swirl matching the provided image with multiple arms and central eye */}
-    <circle cx="50" cy="50" r="12" />
-    <path d="M50 0C22.4 0 0 22.4 0 50c0 12 4.2 23 11.2 31.6l4.8-4.8C10.6 69.9 8 60.3 8 50c0-23.2 18.8-42 42-42s42 18.8 42 42c0 10.3-3.7 19.7-9.8 27l5.2 5.2C95.1 73.6 100 62.4 100 50 100 22.4 77.6 0 50 0z" />
-    <path d="M50 15c-19.3 0-35 15.7-35 35 0 7.8 2.6 15 6.9 20.8l5.4-5.4C24.3 61 23 55.7 23 50c0-14.9 12.1-27 27-27s27 12.1 27 27c0 5.7-1.3 11-4.3 15.4l5.4 5.4c4.3-5.8 6.9-13 6.9-20.8 0-19.3-15.7-35-35-35z" />
-    <path d="M50 30c-11 0-20 9-20 20 0 4.5 1.5 8.7 4 12l5.6-5.6c-1.6-1.9-2.6-4.3-2.6-6.4 0-7.2 5.8-13 13-13s13 5.8 13 13c0 2.1-1 4.5-2.6 6.4L66 62c2.5-3.3 4-7.5 4-12 0-11-9-20-20-20z" />
-    <path d="M85 10L70 25c10 5 18 15 22 25l8-8c-5-15-15-27-15-32z" />
-    <path d="M15 90l15-15c-10-5-18-15-22-25l-8 8c5 15 15 27 15 32z" />
-    <path d="M54 44c1.5 0 2.5 1 2.5 2.5S55.5 49 54 49s-2.5-1-2.5-2.5 1-2.5 2.5-2.5z" fill="white" opacity="0.8" />
-  </svg>
+  <img 
+    src="https://i.ibb.co/5gsCw3mg/Eddie-Macs-VP-Invoice-20260212-135719-0000.png" 
+    alt="Sydie Media Logo" 
+    className={`object-contain ${className}`} 
+  />
+);
+
+const WhatsAppButton = () => (
+  <a
+    href="https://wa.me/27760376942"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="fixed bottom-8 right-8 z-50 flex items-center gap-3 px-6 py-3 bg-[#C8A951] text-white rounded-full shadow-xl hover:bg-[#4A8C8C] transition-all duration-300 group hover:-translate-y-1"
+  >
+    <MessageCircle className="w-5 h-5" />
+    <span className="text-xs font-bold uppercase tracking-widest hidden md:block">Let's Talk!</span>
+  </a>
 );
 
 const Header: React.FC = () => {
@@ -32,37 +39,47 @@ const Header: React.FC = () => {
 
   const navLinks = [
     { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
+    { name: 'The Salon', href: '#the-salon' },
+    { name: 'The Anthology', href: '#the-anthology' },
     { name: 'Ethos', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ${
-      isScrolled ? 'py-4 bg-[#FCFAF2]/95 backdrop-blur-lg border-b border-[#2D2A26]/5 shadow-sm' : 'py-10'
+      isScrolled ? 'py-4 bg-[#FDFCF8]/95 backdrop-blur-lg border-b border-[#E2E8F0] shadow-sm' : 'py-8'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center gap-5 group cursor-pointer">
-          <div className="w-14 h-14 overflow-hidden flex items-center justify-center transition-transform duration-700 group-hover:rotate-180">
-            <SydieLogo className="w-12 h-12 text-[#2D2A26]" />
+          <div className="relative w-12 h-12 flex items-center justify-center">
+            <img 
+              src="https://i.ibb.co/5gsCw3mg/Eddie-Macs-VP-Invoice-20260212-135719-0000.png" 
+              alt="Sydie Media Logo" 
+              className="absolute inset-0 w-10 h-10 m-auto object-contain transition-opacity duration-300 group-hover:opacity-0 group-active:opacity-0" 
+            />
+            <img 
+              src="https://i.ibb.co/mVG9WHbr/Untitled-design-20260310-000723-0000.png" 
+              alt="Sydie Media Logo Color" 
+              className="absolute inset-0 w-10 h-10 m-auto object-contain transition-opacity duration-300 opacity-0 group-hover:opacity-100 group-active:opacity-100" 
+            />
           </div>
-          <span className="text-2xl font-black tracking-tighter uppercase font-serif text-[#2D2A26]">Sydie Media</span>
+          <span className="text-xl font-bold tracking-widest uppercase font-serif text-[#262626]">Sydie Media</span>
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-14">
+        <div className="hidden md:flex items-center gap-12">
           {navLinks.map(link => (
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-[10px] font-black uppercase tracking-[0.4em] text-[#2D2A26]/40 hover:text-[#00A8A8] transition-colors"
+              className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#262626]/60 hover:text-[#4A8C8C] transition-colors"
             >
               {link.name}
             </a>
           ))}
           <a 
             href="#contact" 
-            className="px-10 py-3 bg-[#FF7B7B] text-white text-[10px] font-black uppercase tracking-[0.3em] hover:bg-[#2D2A26] transition-all flex items-center gap-3 shadow-[6px_6px_0px_0px_rgba(45,42,38,0.1)] hover:shadow-[6px_6px_0px_0px_rgba(45,42,38,1)]"
+            className="px-8 py-3 bg-[#E08D79] text-white text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-[#262626] transition-all flex items-center gap-3 shadow-md hover:shadow-lg rounded-full"
           >
             Inquire
             <ArrowUpRight className="w-4 h-4" />
@@ -70,20 +87,20 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-[#2D2A26]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
+        <button className="md:hidden text-[#262626]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       {/* Mobile Nav Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-[#FCFAF2] z-[99] flex flex-col items-center justify-center space-y-12 text-4xl font-serif font-black md:hidden">
+        <div className="fixed inset-0 bg-[#FDFCF8] z-[99] flex flex-col items-center justify-center space-y-12 text-3xl font-serif font-medium md:hidden">
           {navLinks.map(link => (
             <a 
               key={link.name} 
               href={link.href} 
               onClick={() => setIsMenuOpen(false)}
-              className="text-[#2D2A26]/40 hover:text-[#00A8A8]"
+              className="text-[#262626]/70 hover:text-[#4A8C8C]"
             >
               {link.name}
             </a>
@@ -91,7 +108,7 @@ const Header: React.FC = () => {
           <a 
             href="#contact"
             onClick={() => setIsMenuOpen(false)}
-            className="px-16 py-6 bg-[#00A8A8] text-white text-xl uppercase tracking-widest font-black"
+            className="px-12 py-5 bg-[#4A8C8C] text-white text-lg uppercase tracking-widest font-bold rounded-full"
           >
             Start Project
           </a>
@@ -103,40 +120,51 @@ const Header: React.FC = () => {
 
 const Footer: React.FC = () => {
   return (
-    <footer className="py-32 px-6 bg-white border-t border-[#2D2A26]/5">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-24">
+    <footer className="py-24 px-6 bg-[#F1F5F9] border-t border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-20">
         <div className="max-w-md">
-          <div className="flex items-center gap-5 mb-10">
-            <SydieLogo className="w-10 h-10 text-[#2D2A26]" />
-            <span className="text-3xl font-black uppercase font-serif tracking-tighter">Sydie Media</span>
+          <div className="flex items-center gap-4 mb-8">
+            <SydieLogo className="w-8 h-8 text-[#262626]" />
+            <span className="text-2xl font-bold uppercase font-serif tracking-widest">Sydie Media</span>
           </div>
-          <p className="text-[#2D2A26]/60 text-lg leading-relaxed mb-10 font-light italic">
+          <p className="text-[#262626]/60 text-lg leading-relaxed mb-8 font-light italic font-serif">
             "Sophisticated narratives, synthesized for the modern world."
           </p>
-          <div className="flex gap-4 mb-8">
-            <div className="w-2 h-2 bg-[#00A8A8] rounded-full" />
-            <div className="w-2 h-2 bg-[#FF7B7B] rounded-full" />
-            <div className="w-2 h-2 bg-[#FFC857] rounded-full" />
+          <div className="flex gap-3 mb-8">
+            <div className="w-3 h-3 bg-[#4A8C8C] rounded-full shadow-sm" />
+            <div className="w-3 h-3 bg-[#E08D79] rounded-full shadow-sm" />
+            <div className="w-3 h-3 bg-[#C8A951] rounded-full shadow-sm" />
           </div>
-          <p className="text-[#2D2A26]/30 text-[10px] font-black uppercase tracking-[0.5em]">© 2024 Sydie Media Group LLC | Palm Springs</p>
+          <p className="text-[#262626]/30 text-[10px] font-bold uppercase tracking-[0.2em]">© 2026 Sydie Media Group LLC</p>
         </div>
         
-        <div className="grid grid-cols-2 gap-24">
-          <div>
-            <h4 className="text-[#00A8A8] text-[11px] font-black tracking-[0.4em] uppercase mb-10">Exploration</h4>
-            <ul className="space-y-5 text-[11px] font-black text-[#2D2A26]/40 uppercase tracking-[0.3em]">
-              <li><a href="#portfolio" className="hover:text-[#FF7B7B] transition-colors">The Archives</a></li>
-              <li><a href="#services" className="hover:text-[#FF7B7B] transition-colors">Studio Capabilities</a></li>
-              <li><a href="#about" className="hover:text-[#FF7B7B] transition-colors">Design Philosophy</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-[#00A8A8] text-[11px] font-black tracking-[0.4em] uppercase mb-10">Connection</h4>
-            <ul className="space-y-5 text-[11px] font-black text-[#2D2A26]/40 uppercase tracking-[0.3em]">
-              <li><a href="#" className="hover:text-[#FF7B7B] transition-colors">Instagram</a></li>
-              <li><a href="#" className="hover:text-[#FF7B7B] transition-colors">LinkedIn</a></li>
-              <li><a href="#" className="hover:text-[#FF7B7B] transition-colors">Contact</a></li>
-            </ul>
+        <div>
+          <h4 className="text-[#4A8C8C] text-[10px] font-bold tracking-[0.25em] uppercase mb-8">Contact The Founder</h4>
+          <div className="space-y-6">
+            <div>
+              <p className="text-xl font-serif text-[#262626] mb-1">Melissa Jane Sydie</p>
+              <div className="flex flex-col gap-2">
+                <a href="mailto:melissa@sydiemedia.com" className="text-[#262626]/60 hover:text-[#E08D79] transition-colors text-sm tracking-wider uppercase font-bold">
+                  melissa@sydiemedia.com
+                </a>
+                <a href="https://wa.me/27760376942" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#262626]/60 hover:text-[#4A8C8C] transition-colors text-sm tracking-wider uppercase font-bold">
+                  <MessageCircle className="w-4 h-4" />
+                  +27 76 037 6942
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex gap-4 pt-4">
+              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#262626]/60 hover:bg-[#E08D79] hover:text-white transition-all shadow-sm hover:-translate-y-1">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#262626]/60 hover:bg-[#4A8C8C] hover:text-white transition-all shadow-sm hover:-translate-y-1">
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#262626]/60 hover:bg-[#C8A951] hover:text-white transition-all shadow-sm hover:-translate-y-1">
+                <Facebook className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -146,25 +174,41 @@ const Footer: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#FDFCF8]">
       <Header />
       <Hero />
+      
+      {/* The Art of The Story Section - Darker Gray Accent Background */}
+      <section className="py-32 px-6 bg-[#E2E8F0] border-y border-[#CBD5E1]">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="text-[#E08D79] font-bold tracking-[0.3em] uppercase text-xs mb-6 block">The Architecture of Story</span>
+          <h2 className="text-5xl md:text-6xl font-serif leading-tight text-[#262626] mb-8 font-medium">
+            The Art of Connection.
+          </h2>
+          <p className="text-[#262626]/70 text-xl md:text-2xl font-light leading-relaxed max-w-2xl mx-auto mb-10">
+            Weaving the human spirit into the digital fabric. In a landscape of automated echoes, the studio crafts the voice that cuts through.
+          </p>
+          <div className="w-24 h-[1px] bg-[#262626]/10 mx-auto" />
+        </div>
+      </section>
+
       <ServicesGrid />
       <Portfolio />
+      <TheAnthology />
       
-      {/* About Section */}
-      <section id="about" className="py-40 px-6 bg-[#FCFAF2] relative overflow-hidden">
-        {/* Decorative MCM Boomerang */}
-        <div className="absolute top-20 left-0 w-64 h-32 bg-[#FFC857]/10 -skew-x-12 -z-10" />
-        <div className="absolute bottom-20 right-0 w-96 h-48 bg-[#00A8A8]/5 skew-y-6 -z-10" />
+      {/* About Section - Human + Tech - Darker Gray */}
+      <section id="about" className="py-40 px-6 bg-[#E2E8F0] relative overflow-hidden border-t border-[#CBD5E1]">
+        {/* Decorative Elements - Muted Tones */}
+        <div className="absolute top-20 left-0 w-64 h-32 bg-[#C8A951]/10 -skew-x-12 -z-10 rounded-r-full" />
+        <div className="absolute bottom-20 right-0 w-96 h-48 bg-[#4A8C8C]/5 skew-y-6 -z-10 rounded-l-full" />
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
           <div className="relative group">
-            <div className="aspect-[4/5] bg-white p-4 ps-shadow-teal border border-[#2D2A26]/5 transition-all duration-700 group-hover:-translate-y-4">
+            <div className="aspect-[4/5] bg-white p-4 appliance-panel transition-all duration-700 group-hover:-translate-y-2">
               <img 
-                src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&q=80&w=1000" 
-                alt="Palm Springs Mid Century Studio" 
-                className="w-full h-full object-cover grayscale brightness-110 group-hover:grayscale-0 transition-all duration-1000"
+                src="https://i.ibb.co/TxMT7VP6/1772878063454.png" 
+                alt="Studio Atmosphere" 
+                className="w-full h-full object-cover grayscale brightness-110 group-hover:grayscale-0 transition-all duration-1000 rounded-xl"
               />
             </div>
             {/* Swirl Watermark */}
@@ -174,22 +218,62 @@ const App: React.FC = () => {
           </div>
           
           <div>
-            <div className="w-16 h-1 bg-[#FF7B7B] mb-10" />
-            <span className="text-[#FF7B7B] font-black tracking-[0.7em] uppercase text-xs mb-10 block">Studio Philosophy</span>
-            <h2 className="text-6xl md:text-8xl font-black font-serif mb-12 leading-[1] text-[#2D2A26]">
-              Timeless <br /><span className="text-[#00A8A8]">Precision.</span>
+            <div className="w-16 h-[2px] bg-[#E08D79] mb-10" />
+            <span className="text-[#E08D79] font-bold tracking-[0.4em] uppercase text-xs mb-10 block">Studio Philosophy</span>
+            <h2 className="text-5xl md:text-7xl font-serif mb-12 leading-[1] text-[#262626] font-medium">
+              Timeless Precision <br /><span className="text-[#4A8C8C] italic text-4xl md:text-6xl">in the Age of AI.</span>
             </h2>
-            <p className="text-[#2D2A26]/70 text-2xl mb-14 leading-relaxed font-light">
-              We operate at the intersection of Palm Springs coolness and digital innovation. Our approach is deliberate, aesthetic-first, and rooted in the principles of Desert Modernism.
+            <p className="text-[#262626]/70 text-xl mb-8 leading-relaxed font-light text-balance">
+              Sydie Media doesn't just use artificial intelligence; The Studio teaches it the pulse of your brand. Sydie Media leverages advanced language models for unparalleled efficiency and speed, but recognizes that true narrative magic—the kind that builds trust and drives action—can only come from the human touch.
             </p>
-            <div className="grid grid-cols-2 gap-16">
-              <div className="border-l-4 border-[#FFC857] pl-10">
-                <p className="text-6xl font-serif font-black text-[#2D2A26] mb-3">15+</p>
-                <p className="text-[#2D2A26]/40 text-[10px] uppercase tracking-[0.4em] font-black">Years Experience</p>
+            <p className="text-[#262626]/70 text-xl mb-14 leading-relaxed font-light text-balance">
+              Lives are woven together by the tapestry of the stories told. Stories still matter. Stories sell. The Studio provides the architectural framework of technology and the irreplaceable soul of a human word alchemist, ensuring your brand scales brilliantly without ever losing its humanity.
+            </p>
+            
+            {/* Metrics - Reverted Style */}
+            <div className="grid grid-cols-2 gap-x-12 gap-y-10 mb-16 border-t border-[#262626]/10 pt-12">
+              <div className="border-l-4 border-[#4A8C8C] pl-6">
+                <p className="text-5xl font-serif text-[#262626] mb-2">15+</p>
+                <p className="text-[#262626]/40 text-[10px] uppercase tracking-[0.3em] font-bold">Years of Strategic Craft</p>
               </div>
-              <div className="border-l-4 border-[#FF7B7B] pl-10">
-                <p className="text-6xl font-serif font-black text-[#2D2A26] mb-3">500+</p>
-                <p className="text-[#2D2A26]/40 text-[10px] uppercase tracking-[0.4em] font-black">Strategic Partners</p>
+              <div className="border-l-4 border-[#E08D79] pl-6">
+                <p className="text-5xl font-serif text-[#262626] mb-2">100%</p>
+                <p className="text-[#262626]/40 text-[10px] uppercase tracking-[0.3em] font-bold">Bespoke Project Scoping</p>
+              </div>
+              <div className="border-l-4 border-[#C8A951] pl-6">
+                <p className="text-5xl font-serif text-[#262626] mb-2">0</p>
+                <p className="text-[#262626]/40 text-[10px] uppercase tracking-[0.3em] font-bold">In-House Overhead</p>
+              </div>
+              <div className="border-l-4 border-[#262626] pl-6">
+                <p className="text-5xl font-serif text-[#262626] mb-2">1</p>
+                <p className="text-[#262626]/40 text-[10px] uppercase tracking-[0.3em] font-bold">Irreplaceable Human Touch</p>
+              </div>
+            </div>
+
+            {/* Logo Placeholders */}
+            <div>
+              <p className="text-[#262626]/30 text-[9px] uppercase tracking-[0.3em] font-bold mb-6">Trusted By</p>
+              <div className="flex flex-wrap gap-8 items-center">
+                {[
+                  "https://i.ibb.co/ym0VQtPs/30-20260309-224116-0003.png",
+                  "https://i.ibb.co/YBwspq6h/24-20260309-113120-0000.png",
+                  "https://i.ibb.co/4nTGKwQk/25-20260309-113120-0001.png",
+                  "https://i.ibb.co/pvWHBCxY/28-20260309-224116-0001.png",
+                  "https://i.ibb.co/4RHRGwBC/27-20260309-224116-0000.png",
+                  "https://i.ibb.co/xPTTwj0/30-20260309-113120-0006.png",
+                  "https://i.ibb.co/JFBgCkVj/29-20260309-224116-0002.png"
+                ].map((logoUrl, i) => (
+                  <div 
+                    key={i} 
+                    className="h-12 md:h-16 flex items-center justify-center group cursor-pointer transition-all duration-300"
+                  >
+                    <img 
+                      src={logoUrl} 
+                      alt={`Partner Logo ${i + 1}`} 
+                      className="h-full w-auto object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -198,7 +282,7 @@ const App: React.FC = () => {
 
       <Contact />
       <Footer />
-      <ChatConsultant />
+      <WhatsAppButton />
     </div>
   );
 };
