@@ -9,7 +9,7 @@ import { Menu, X, ArrowUpRight, MessageCircle, Facebook, Instagram, Linkedin } f
 
 const SydieLogo = ({ className }: { className?: string }) => (
   <img 
-    src="https://i.ibb.co/5gsCw3mg/Eddie-Macs-VP-Invoice-20260212-135719-0000.png" 
+    src="https://i.ibb.co/x8qmNY3x/IMG-20260307-120358.png" 
     alt="Sydie Media Logo" 
     className={`object-contain ${className}`} 
   />
@@ -53,12 +53,12 @@ const Header: React.FC = () => {
         <div className="flex items-center gap-5 group cursor-pointer">
           <div className="relative w-12 h-12 flex items-center justify-center">
             <img 
-              src="https://i.ibb.co/5gsCw3mg/Eddie-Macs-VP-Invoice-20260212-135719-0000.png" 
+              src="https://i.ibb.co/x8qmNY3x/IMG-20260307-120358.png" 
               alt="Sydie Media Logo" 
               className="absolute inset-0 w-10 h-10 m-auto object-contain transition-opacity duration-300 group-hover:opacity-0 group-active:opacity-0" 
             />
             <img 
-              src="https://i.ibb.co/mVG9WHbr/Untitled-design-20260310-000723-0000.png" 
+              src="https://i.ibb.co/LXcWJQpP/Sydie-Media-Studio-Social-Media-Covers-20260311-161516-0000.png" 
               alt="Sydie Media Logo Color" 
               className="absolute inset-0 w-10 h-10 m-auto object-contain transition-opacity duration-300 opacity-0 group-hover:opacity-100 group-active:opacity-100" 
             />
