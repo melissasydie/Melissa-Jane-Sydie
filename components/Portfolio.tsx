@@ -11,6 +11,7 @@ const CATEGORIES: Category[] = ['All', 'Writing', 'Audio', 'Video', 'Marketing',
 
 const Portfolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('All');
+  const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -18,6 +19,13 @@ const Portfolio: React.FC = () => {
   const filteredProjects = activeCategory === 'All' 
     ? PROJECTS 
     : PROJECTS.filter(p => p.category === activeCategory);
+
+  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 5);
+
+  const handleCategoryChange = (cat: Category) => {
+    setActiveCategory(cat);
+    setShowAll(false);
+  };
 
   const handleProjectClick = (project: Project) => {
     if (project.modalType) {
@@ -44,7 +52,7 @@ const Portfolio: React.FC = () => {
         {CATEGORIES.map(cat => (
           <button
             key={cat}
-            onClick={() => setActiveCategory(cat)}
+            onClick={() => handleCategoryChange(cat)}
             className={`pb-4 text-xs font-bold tracking-[0.25em] uppercase transition-all relative ${
               activeCategory === cat 
                 ? 'text-[#4A8C8C]' 
@@ -60,7 +68,7 @@ const Portfolio: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-        {filteredProjects.map((project) => {
+        {displayedProjects.map((project) => {
           return (
             <div 
               key={project.id}
@@ -144,6 +152,17 @@ const Portfolio: React.FC = () => {
           );
         })}
       </div>
+
+      {!showAll && filteredProjects.length > 5 && (
+        <div className="mt-20 flex justify-center">
+          <button 
+            onClick={() => setShowAll(true)}
+            className="px-12 py-5 border border-[#4A8C8C] text-[#4A8C8C] text-xs font-bold uppercase tracking-[0.3em] rounded-full hover:bg-[#4A8C8C] hover:text-white transition-all duration-500 shadow-sm hover:shadow-md"
+          >
+            View All Pieces
+          </button>
+        </div>
+      )}
 
       <AnimatePresence>
         {selectedProject && (

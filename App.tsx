@@ -253,7 +253,7 @@ const App: React.FC = () => {
             {/* Logo Placeholders */}
             <div>
               <p className="text-[#262626]/30 text-[9px] uppercase tracking-[0.3em] font-bold mb-6">Trusted By</p>
-              <div className="flex flex-wrap gap-8 items-center">
+              <div className="flex flex-wrap md:flex-nowrap gap-8 md:gap-4 items-center justify-between">
                 {[
                   "https://i.ibb.co/ym0VQtPs/30-20260309-224116-0003.png",
                   "https://i.ibb.co/YBwspq6h/24-20260309-113120-0000.png",
@@ -265,7 +265,7 @@ const App: React.FC = () => {
                 ].map((logoUrl, i) => (
                   <div 
                     key={i} 
-                    className="h-12 md:h-16 flex items-center justify-center group cursor-pointer transition-all duration-300"
+                    className="h-16 md:h-16 flex items-center justify-center group cursor-pointer transition-all duration-300 flex-1 min-w-[120px] md:min-w-0"
                   >
                     <img 
                       src={logoUrl} 
